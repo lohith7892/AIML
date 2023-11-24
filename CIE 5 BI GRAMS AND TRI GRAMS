@@ -1,0 +1,80 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMx6B/NBVPTqGAJaZoWefWh",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/lohith7892/AIML/blob/master/CIE%205%20BI%20GRAMS%20AND%20TRI%20GRAMS\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import spacy\n",
+        "from spacy.tokens import Doc\n",
+        "\n",
+        "# Load the English language model in spaCy\n",
+        "nlp = spacy.load(\"en_core_web_sm\")\n",
+        "\n",
+        "# Define your text\n",
+        "text = \"The greatest glory in Living lies not in never falling but in raising every Lies.\"\n",
+        "\n",
+        "# Process the text with spaCy\n",
+        "doc = nlp(text)\n",
+        "\n",
+        "# Extract bi-grams and tri-grams\n",
+        "bi_grams = [(doc[i].text, doc[i + 1].text) for i in range(len(doc) - 1)]\n",
+        "tri_grams = [(doc[i].text, doc[i + 1].text, doc[i + 2].text) for i in range(len(doc) - 2)]\n",
+        "\n",
+        "print(\"Bi-grams:\", bi_grams)\n",
+        "print(\"Tri-grams:\", tri_grams)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "yRml494ydQMA",
+        "outputId": "ef7a886e-c572-4b1b-e649-62496a05ee88"
+      },
+      "execution_count": 6,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Bi-grams: [('The', 'greatest'), ('greatest', 'glory'), ('glory', 'in'), ('in', 'Living'), ('Living', 'lies'), ('lies', 'not'), ('not', 'in'), ('in', 'never'), ('never', 'falling'), ('falling', 'but'), ('but', 'in'), ('in', 'raising'), ('raising', 'every'), ('every', 'Lies'), ('Lies', '.')]\n",
+            "Tri-grams: [('The', 'greatest', 'glory'), ('greatest', 'glory', 'in'), ('glory', 'in', 'Living'), ('in', 'Living', 'lies'), ('Living', 'lies', 'not'), ('lies', 'not', 'in'), ('not', 'in', 'never'), ('in', 'never', 'falling'), ('never', 'falling', 'but'), ('falling', 'but', 'in'), ('but', 'in', 'raising'), ('in', 'raising', 'every'), ('raising', 'every', 'Lies'), ('every', 'Lies', '.')]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "7j8G501edorz"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
